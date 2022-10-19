@@ -94,6 +94,7 @@ class Softmax(object):
     def forward(self, input):
 
         self.last_input_shape = input.shape
+        print(input.shape)
 
         input = input.flatten()
         self.last_input = input
@@ -201,7 +202,7 @@ class ConvNet(object):
                 num_correct += acc
         hist = {
             'loss': losses,
-            'acc': acc
+            'acc': accs
         }
         with open('history.pkl', 'wb') as outp:
             pickle.dump(hist, outp, pickle.HIGHEST_PROTOCOL)
