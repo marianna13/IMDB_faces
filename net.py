@@ -94,7 +94,6 @@ class Softmax(object):
     def forward(self, input):
 
         self.last_input_shape = input.shape
-        print(input.shape)
 
         input = input.flatten()
         self.last_input = input
