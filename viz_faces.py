@@ -32,7 +32,7 @@ def title(y_pred, y_test, target_names, i):
     return "predicted: %s\ntrue:      %s" % (pred_name, true_name)
 
 
-def get_vis(test_images, target_names, model, h, w):
+def get_vis(test_images, test_labels, target_names, model, h, w):
 
     permutation = np.random.permutation(len(test_images))
     test_images = test_images[permutation]
