@@ -38,7 +38,6 @@ class Conv(object):
             for f in range(self.num_filters):
                 d_l_d_filters[f] += d_l_d_out[i, j, f] * im_region
 
-        # update filters
         self.filters -= learn_rate * d_l_d_filters
 
         return None
@@ -168,7 +167,7 @@ class ConvNet(object):
 
         return loss, acc
 
-    def fit(self, train_images, train_labels, lr=0.00005, EPOCHS=1):
+    def fit(self, train_images, train_labels, lr=0.00005, EPOCHS=1, test_images=[], test_labels=[]):
 
         self.train_images = train_images
         self.train_labels = train_labels
@@ -176,6 +175,7 @@ class ConvNet(object):
         self.epochs = EPOCHS
 
         losses, accs = [], []
+        test_losses, test_accs = [], []
 
         for epoch in range(EPOCHS):
             print(f'----EPOCH {epoch+1}/{EPOCHS} ---')
@@ -189,19 +189,22 @@ class ConvNet(object):
 
             for i, (im, label) in enumerate(zip(train_images, train_labels)):
                 if(i > 0 and i % 100 == 99):
+
                     print('[Step %d] Past 100 steps: Average Loss %.3f | Accuracy: %d%%' % (
                         i + 1, loss / 100, num_correct))
 
                     loss = 0
                     num_correct = 0
+
                 l, acc = self._train(im, label, lr)
+
                 loss += l
                 losses.append(loss)
                 accs.append(acc)
                 num_correct += acc
         hist = {
             'loss': losses,
-            'acc': accs
+            'acc': accs,
         }
         with open('history.pkl', 'wb') as outp:
             pickle.dump(hist, outp, pickle.HIGHEST_PROTOCOL)
