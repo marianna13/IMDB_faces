@@ -7,5 +7,5 @@ Images URLs scraped from [IMDB website](https://www.imdb.com/).
 - [ConvNet from scratch](net.py)
 - [10k URLs of images](https://github.com/marianna13/IMDB_faces/blob/main/IMDB_faces.parquet)
 - [10k URLs of images with labels](https://github.com/marianna13/IMDB_faces/blob/main/IMDB_faces_w_labels.parquet)
-- [Data loader](https://github.com/marianna13/IMDB_faces/blob/main/dataset.py)
+- [Torch Dataset](https://github.com/marianna13/IMDB_faces/blob/main/dataset.py)
 - [10k downloaded images](https://github.com/marianna13/IMDB_faces/blob/main/images_folder.zip)
